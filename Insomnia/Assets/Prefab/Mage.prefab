@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -100,9 +100,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 7330481838646309415}
   - component: {fileID: 7070343311793858767}
   m_Layer: 0
-  m_Name: Michel
+  m_Name: Mage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,15 +160,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae96a585fb0870c43bccce2de21ed1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 6055118210021276130}
   _cannon: {fileID: 1185320365702482794}
+  isMele: 0
   uniteLife: 2
   _uniteSpeed: 1
   _uniteMeleDamage: 1
-  _uniteRangeDamage: 0
-  _uniteRange: 1
-  isMele: 1
-  isFromPlayer1: 0
+  _uniteRangeDamage: 2
+  _uniteRange: 2
+  strikeCd: 3
+  shootCd: 2
 --- !u!50 &-7229178782324800558
 Rigidbody2D:
   serializedVersion: 4
@@ -257,7 +257,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.020692414, g: 0.2924528, b: 0.06709055, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
