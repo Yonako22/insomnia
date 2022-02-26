@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
    [SerializeField] private GameObject _enemyPrefab;
+   [SerializeField] private GameObject _cannon;
+
    public int uniteLife;
    [SerializeField] private float _uniteSpeed;
    [SerializeField] private float _uniteMeleDamage;
@@ -12,10 +13,9 @@ public class Enemy : MonoBehaviour
    [SerializeField] private bool isMele;
    private bool _enemyIsInRange;
    private float distance;
-   private GameObject target;
+
    
- 
-   
+
    public bool isFromPlayer1;
    
    Rigidbody2D rb;
@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
       {
          gameObject.tag = "IsFromPlayer2";
          gameObject.layer = 7;
+         transform.rotation = Quaternion.Euler(0,-180,0);
       }
       
       rb = gameObject.GetComponent<Rigidbody2D>();
@@ -38,7 +39,7 @@ public class Enemy : MonoBehaviour
 
    private void Update()
    {
-      if (isFromPlayer1)
+      if (gameObject.tag == "IsFromPlayer1")
       {
          rb.velocity = Vector2.right * _uniteSpeed;
       }
@@ -65,33 +66,17 @@ public class Enemy : MonoBehaviour
             }
          }
       }
-      
    }
 
    private void FixedUpdate()
    {
-      RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.forward, _uniteRange);
-      Debug.DrawRay(this.gameObject.transform.position, Vector3.forward * _uniteRange * 100, Color.green);
+      RaycastHit2D hit2D = Physics2D.Raycast(_cannon.transform.position, transform.right, _uniteRange);
+      Debug.DrawRay(_cannon.transform.position, transform.right * _uniteRange, Color.red);
 
       if (hit2D.collider != null)
       {
-         distance = Mathf.Abs(hit2D.point.y - transform.position.y); // Distance entre l'unité et l'ennemie touché
-         target = hit2D.transform.gameObject;
-         
-         if (isFromPlayer1)
-         {
-            if (hit2D.collider.CompareTag("IsFromPlayer2"))
-            {
-               _enemyIsInRange = true;
-            }
-         }
-         else if (!isFromPlayer1)
-         {
-            if (hit2D.collider.CompareTag("IsFromPlayer1"))
-            {
-               _enemyIsInRange = true;
-            }
-         }
+            distance = Mathf.Abs(hit2D.point.y - transform.position.y); // Distance entre l'unité et l'ennemie touché
+            _enemyIsInRange = true;
       }
    }
 
